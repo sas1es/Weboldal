@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HTML Kódolás Oktató Weboldal</title>
   <style>
     body {
@@ -38,6 +38,8 @@
     section {
       display: none;
       padding: 2em;
+      max-width: 900px;
+      margin: auto;
     }
     section.active {
       display: block;
@@ -60,6 +62,9 @@
       border: 2px solid #ccc;
       border-radius: 8px;
     }
+    ul {
+      margin-left: 1.5em;
+    }
   </style>
 </head>
 <body>
@@ -67,140 +72,200 @@
     <h1>HTML Kódolás Oktató Weboldal</h1>
   </header>
   <nav>
-    <button onclick="showSection('bevezetes')">Teljesen Kezdőknek</button>
+    <button onclick="showSection('alapok')">Alapok</button>
+    <button onclick="showSection('teljesen_kezdok')">Teljesen kezdőknek</button>
     <button onclick="showSection('kodolas')">Kódolás</button>
-    <button onclick="showSection('miert')">Miért csináltam ezt a weboldalt?</button>
     <button onclick="showSection('feladatok')">Feladatok</button>
+    <button onclick="showSection('miert')">Miért csináltam ezt a weboldalt?</button>
     <button onclick="showSection('szerzo')">Szerző</button>
   </nav>
 
-  <section id="bevezetes" class="active">
-    <h2>Teljesen Kezdőknek</h2>
-    <p>Ebben a részben teljesen az alapoktól indulunk. Megmutatjuk, hogyan épül fel egy HTML oldal, és lépésről lépésre vezetünk végig mindenen, amit tudnod kell az induláshoz.</p>
+  <section id="alapok" class="active">
+    <h2>Alapok</h2>
+
+    <h3>Mi az a HTML?</h3>
+    <p>A HTML (HyperText Markup Language) egy olyan nyelv, amely segítségével weboldalakat készítünk. Nem programozási nyelv, hanem egy jelölőnyelv, amely megmondja a böngészőnek, hogyan jelenítse meg a tartalmat.</p>
+
+    <h3>HTML elemek</h3>
+    <p>A HTML oldal elemekből áll, amiket tageknek nevezünk. Minden elem általában nyitó és záró tagből áll:</p>
+    <pre><code>&lt;tag&gt;Tartalom&lt;/tag&gt;</code></pre>
+    <p>Például:</p>
+    <pre><code>&lt;p&gt;Ez egy bekezdés.&lt;/p&gt;</code></pre>
+    <p>A <code>&lt;p&gt;</code> az egyik leggyakoribb HTML elem, ami bekezdést jelöl.</p>
+
+    <h3>Mi az a tag és attribútum?</h3>
+    <p>A tag a HTML elem neve, pl. <code>p</code>, <code>h1</code>, <code>img</code>. A tag-ekhez tartozhatnak attribútumok, amik plusz információt adnak:</p>
+    <pre><code>&lt;tag attribútum="érték"&gt;Tartalom&lt;/tag&gt;</code></pre>
+    <p>Például egy kép beszúrása:</p>
+    <pre><code>&lt;img src="kep.jpg" alt="Leírás"&gt;</code></pre>
+    <p>Itt a <code>src</code> az attribútum, ami a kép helyét mondja meg, az <code>alt</code> pedig a kép leírása, ami akkor látható, ha a kép nem tölt be.</p>
+
+    <h3>Hogyan működik a weboldal?</h3>
+    <p>Amikor megnyitsz egy weboldalt, a böngésző letölti a HTML kódot, majd értelmezi azt, és megjeleníti a formázott tartalmat. A HTML önmagában csak a tartalom szerkezetét határozza meg, a kinézetet a CSS szabályokkal tudjuk megadni.</p>
+
+    <h3>Mi az a CSS?</h3>
+    <p>A CSS (Cascading Style Sheets) segítségével tudjuk megmondani, hogy a HTML elemek hogyan nézzenek ki. Pl. milyen színű legyen a háttér, vagy a szöveg.</p>
+
+    <h3>Összefoglalás</h3>
+    <ul>
+      <li>HTML = a weboldal szerkezete és tartalma</li>
+      <li>CSS = a weboldal megjelenése, formázása</li>
+      <li>Tag-ek = HTML elemek, amik tartalmat vagy szerkezetet jelölnek</li>
+      <li>Attribútumok = extra információk a tag-ekhez</li>
+    </ul>
+  </section>
+
+  <section id="teljesen_kezdok">
+    <h2>Teljesen kezdőknek</h2>
 
     <h3>1. HTML alapváz</h3>
-    <p>Minden HTML oldalnak van egy alap szerkezete. Ezt mindig használnod kell, ha új weboldalt készítesz.</p>
+    <p>A HTML oldal alap szerkezete meghatározza, hogyan épül fel a dokumentum, és biztosítja, hogy a böngészők helyesen jelenítsék meg az oldalt.</p>
     <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
+&lt;html lang="hu"&gt;
   &lt;head&gt;
-    &lt;title&gt;A weboldalam címe&lt;/title&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Oldal címe&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    Itt jön a tartalom.
+    Itt a tartalom.
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-    <p>Ez a szerkezet mondja meg a böngészőnek, hogy HTML-t használunk, és hol kezdődik a tartalom (<code>&lt;body&gt;</code>).</p>
-
-    <h3>2. Címsorok</h3>
-    <p>A címsorokat <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code> között használhatod. Az <code>&lt;h1&gt;</code> a legnagyobb cím, a <code>&lt;h6&gt;</code> a legkisebb.</p>
-    <pre><code>&lt;h1&gt;Ez a főcím&lt;/h1&gt;
-&lt;h2&gt;Ez egy alcím&lt;/h2&gt;</code></pre>
-
-    <h3>3. Bekezdések</h3>
-    <p>A szöveg bekezdéseit a <code>&lt;p&gt;</code> tag közé írjuk.</p>
-    <pre><code>&lt;p&gt;Ez egy bekezdés.&lt;/p&gt;</code></pre>
-
-    <h3>4. Szöveg formázása</h3>
-    <p>HTML-ben megformázhatod a szöveget. Itt néhány alap példa:</p>
+    <p>Magyarázat:</p>
     <ul>
-      <li><code>&lt;b&gt;félkövér szöveg&lt;/b&gt;</code></li>
-      <li><code>&lt;i&gt;dőlt szöveg&lt;/i&gt;</code></li>
-      <li><code>&lt;u&gt;aláhúzott szöveg&lt;/u&gt;</code></li>
-      <li><code>&lt;p style="color:blue; text-align:center; font-weight:bold; font-style:italic;"&gt;Formázott szöveg&lt;/p&gt;</code></li>
+      <li><code>&lt;!DOCTYPE html&gt;</code>: Megmondja a böngészőnek, hogy HTML5 szabványt használunk.</li>
+      <li><code>&lt;html lang="hu"&gt;</code>: A dokumentum nyelve magyar (<code>hu</code>).</li>
+      <li><code>&lt;head&gt;</code>: Itt helyezkednek el az oldal meta-információi (például karakterkódolás és cím).</li>
+      <li><code>&lt;meta charset="UTF-8"&gt;</code>: Megadja a karakterkódolást, hogy az ékezetes karakterek helyesen jelenjenek meg.</li>
+      <li><code>&lt;title&gt;</code>: Az oldal címe, ami a böngésző fülén jelenik meg.</li>
+      <li><code>&lt;body&gt;</code>: Az oldal tényleges tartalma ide kerül.</li>
     </ul>
-    <p>A <code>style</code> részen belül CSS-t írhatsz, például a <code>color</code> a színt, a <code>text-align</code> az igazítást, a <code>font-weight</code> a vastagságot szabályozza.</p>
 
-    <h3>5. Képek hozzáadása</h3>
-    <p>Kép beszúrásához ezt a kódot használjuk:</p>
-    <pre><code>&lt;img src="kep.jpg" alt="Ez egy kép" width="300"&gt;</code></pre>
-    <p>Itt a <code>src</code> a kép helyét, az <code>alt</code> a leírását, a <code>width</code> pedig a méretét adja meg.</p>
+    <h3>2. Címsorok és bekezdések</h3>
+    <p>A címsorok segítségével hierarchiát adhatsz az oldal szövegének. A legfontosabb a <code>&lt;h1&gt;</code>, a legkevésbé fontos pedig a <code>&lt;h6&gt;</code>.</p>
+    <pre><code>&lt;h1&gt;Ez a főcím&lt;/h1&gt;
+&lt;h2&gt;Ez egy alcím&lt;/h2&gt;
+&lt;p&gt;Ez egy bekezdés szöveg.&lt;/p&gt;</code></pre>
+    <p>A bekezdéseket a <code>&lt;p&gt;</code> taggel jelöljük. A böngésző ezek között alapból térközt hagy.</p>
 
-    <h3>6. Linkek</h3>
-    <p>Link létrehozása más oldalakhoz:</p>
-    <pre><code>&lt;a href="https://example.com" target="_blank"&gt;Kattints ide&lt;/a&gt;</code></pre>
-    <p>A <code>href</code> határozza meg a link célját, a <code>target="_blank"</code> pedig új lapon nyitja meg.</p>
+    <h3>3. Szövegformázás</h3>
+    <p>Szövegedet különböző tagekkel formázhatod:</p>
+    <ul>
+      <li><code>&lt;b&gt;</code>: félkövér</li>
+      <li><code>&lt;i&gt;</code>: dőlt</li>
+      <li><code>&lt;u&gt;</code>: aláhúzott</li>
+      <li><code>&lt;mark&gt;</code>: kiemelt háttér</li>
+    </ul>
+    <pre><code>&lt;p&gt;Ez a szöveg &lt;b&gt;félkövér&lt;/b&gt;, &lt;i&gt;dőlt&lt;/i&gt; és &lt;u&gt;aláhúzott&lt;/u&gt; lesz.&lt;/p&gt;</code></pre>
 
-    <h3>7. Gomb és szöveg változtatása</h3>
-    <p>Az alábbi példában egy gomb megnyomásával változik meg a szöveg:</p>
-    <pre><code>&lt;p id="valtozo1"&gt;Eredeti szöveg&lt;/p&gt;
-&lt;button onclick="document.getElementById('valtozo1').innerText = 'Új szöveg!'"&gt;Kattints ide&lt;/button&gt;</code></pre>
-    <p>Itt JavaScriptet használunk a <code>onclick</code> eseményre. A gomb megnyomásakor a <code>valtozo1</code> ID-jű bekezdés tartalma megváltozik.</p>
+    <h3>4. Színek megadása hex kódokkal</h3>
+    <p>A színeket a CSS-ben hexadecimális kódokkal adhatod meg, pl.:</p>
+    <ul>
+      <li><code>#FF0000</code> – piros</li>
+      <li><code>#00FF00</code> – zöld</li>
+      <li><code>#0000FF</code> – kék</li>
+      <li><code>#000000</code> – fekete</li>
+      <li><code>#FFFFFF</code> – fehér</li>
+    </ul>
+    <p>Példa háttérszín megadására:</p>
+    <pre><code>body {
+  background-color: #e0f7fa;
+}</code></pre>
+
+    <h3>5. Színezés CSS segítségével</h3>
+    <p>Két módon színezhetsz:</p>
+    <ul>
+      <li><strong>Az egész weboldal színezése:</strong> például a <code>body</code> elem háttérszínének megadása.</li>
+      <li><strong>Csak egy rész színezése:</strong> egy adott HTML elemnek, például egy <code>&lt;div&gt;</code>-nek vagy <code>&lt;p&gt;</code>-nek a háttérszíne vagy szövegszíne.</li>
+    </ul>
+    <pre><code>&lt;!-- Egész oldal színezése --&gt;
+&lt;style&gt;
+  body {
+    background-color: #f0f0f0;
+  }
+&lt;/style&gt;
+
+&lt;!-- Csak egy rész színezése --&gt;
+&lt;div style="background-color: #ffccbc;"&gt;Színes doboz&lt;/div&gt;</code></pre>
+
+    <h3>6. Alapvető HTML szabályok</h3>
+    <ul>
+      <li>Minden nyitó taghoz tartozik záró tag, kivéve az önzáró tageket (<code>&lt;img&gt;</code>, <code>&lt;br&gt;</code> stb.).</li>
+      <li>A tageknek helyesen kell egymásba ágyazódniuk.</li>
+      <li>Használj behúzásokat a kód áttekinthetősége érdekében.</li>
+    </ul>
+
   </section>
 
   <section id="kodolas">
     <h2>Kódolás</h2>
-    <p>Itt részletesen bemutatjuk, hogyan tudsz HTML-ben dolgozni. Az egyes elemekhez példát és magyarázatot is mellékelünk.</p>
-    
-    <h3>1. Címsor létrehozása</h3>
-    <pre><code>&lt;h1&gt;Ez egy főcím&lt;/h1&gt;</code></pre>
-    <p>A <code>&lt;h1&gt;</code> a legnagyobb címsor. Létezik <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code> közötti változat, ahol a szám növekedésével a méret csökken.</p>
+    <p>Itt részletesen megmutatjuk, hogyan írj HTML kódot lépésről lépésre.</p>
 
-    <h3>2. Bekezdés</h3>
-    <pre><code>&lt;p&gt;Ez egy bekezdés.&lt;/p&gt;</code></pre>
-    <p>Bekezdéseket <code>&lt;p&gt;</code> tagekkel jelölünk.</p>
+    <h3>Egyszerű HTML oldal készítése</h3>
+    <p>Írj egy egyszerű weboldalt, ami tartalmaz egy címsort és egy bekezdést:</p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="hu"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Első oldalam&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Üdvözöllek!&lt;/h1&gt;
+  &lt;p&gt;Ez az első HTML oldalam.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
-    <h3>3. Szöveg formázása</h3>
-    <p>Használhatsz félkövér, dőlt, aláhúzott szövegeket:</p>
+    <h3>Magyarázat</h3>
     <ul>
-      <li><code>&lt;b&gt;félkövér&lt;/b&gt;</code></li>
-      <li><code>&lt;i&gt;dőlt&lt;/i&gt;</code></li>
-      <li><code>&lt;u&gt;aláhúzott&lt;/u&gt;</code></li>
-      <li><code>&lt;p style="color:red"&gt;piros szöveg&lt;/p&gt;</code></li>
+      <li><code>&lt;!DOCTYPE html&gt;</code> – megadja, hogy HTML5-öt használunk.</li>
+      <li><code>&lt;html lang="hu"&gt;</code> – a dokumentum nyelve magyar.</li>
+      <li><code>&lt;head&gt;</code> – meta-információkat tartalmaz (pl. karakterkódolás, cím).</li>
+      <li><code>&lt;title&gt;</code> – a böngésző fülén megjelenő oldal neve.</li>
+      <li><code>&lt;body&gt;</code> – a megjelenő tartalom helye.</li>
+      <li><code>&lt;h1&gt;</code> – a legfontosabb címsor.</li>
+      <li><code>&lt;p&gt;</code> – bekezdés, szöveg elhelyezésére.</li>
     </ul>
-    <p>A <code>style</code> attribútummal CSS-t adhatsz hozzá, például a színt.</p>
 
-    <h3>4. Kép beszúrása</h3>
-    <pre><code>&lt;img src="pelda.jpg" alt="Egy kép" width="300"&gt;</code></pre>
-    <p>A <code>src</code> a fájl neve vagy elérési útja, az <code>alt</code> alternatív szöveg, a <code>width</code> pedig a szélesség pixelben.</p>
-
-    <h3>5. Link létrehozása</h3>
-    <pre><code>&lt;a href="https://example.com" target="_blank"&gt;Ugrás az oldalra&lt;/a&gt;</code></pre>
-    <p>A <code>href</code> határozza meg a link célját. A <code>target="_blank"</code> új lapon nyitja meg.</p>
-
-    <h3>6. Gomb és szöveg változtatása</h3>
-    <pre><code>&lt;p id="valtozo2"&gt;Eredeti szöveg&lt;/p&gt;
-&lt;button onclick="document.getElementById('valtozo2').innerText = 'Új szöveg!'"&gt;Változtasd meg!&lt;/button&gt;</code></pre>
-    <p>Egy egyszerű JavaScript segítségével módosíthatjuk az oldal tartalmát a gomb megnyomására.</p>
-  </section>
-
-  <section id="miert">
-    <h2>Miért csináltam ezt a weboldalt?</h2>
-    <p>Mert unatkoztam és hogy tanuljak valami újat.</p>
+    <h3>Fontos szabályok</h3>
+    <ul>
+      <li>Minden nyitó taghoz tartozik záró tag (kivéve önzáró tagek, pl. <code>&lt;img&gt;</code>).</li>
+      <li>A tageket helyesen kell egymásba ágyazni.</li>
+      <li>A HTML kódot könnyen olvashatóvá tehetjük behúzásokkal.</li>
+    </ul>
   </section>
 
   <section id="feladatok">
     <h2>Feladatok</h2>
+    <p>Írj meg legalább 6 feladatot, amikkel gyakorolhatod a HTML alapokat!</p>
 
-    <h3>Könnyű</h3>
-    <ul>
-      <li>Írj egy HTML oldalt, ami tartalmaz egy címsort és egy bekezdést.</li>
-      <li>Színezd át a szöveget kékre.</li>
-    </ul>
+    <ol>
+      <li>Készíts egy HTML oldalt, amely tartalmaz egy főcímet és két bekezdést!</li>
+      <li>Színezd ki az egyik bekezdést CSS segítségével piros színűre a <code>style</code> attribútummal!</li>
+      <li>Hozz létre egy <code>&lt;div&gt;</code> elemet, amelynek a háttérszíne legyen világoskék, és legyen benne egy rövid szöveg!</li>
+      <li>Használj legalább három különböző HTML címsort (<code>&lt;h1&gt;</code>-től <code>&lt;h3&gt;</code>-ig) a weboldaladon!</li>
+      <li>Beszúrj egy képet a weboldaladba a <code>&lt;img&gt;</code> tag segítségével, és adj neki alternatív szöveget!</li>
+      <li>Írj egy egyszerű bekezdést, amelyben kiemeled a szöveg egy részét félkövér és dőlt formában!</li>
+    </ol>
+  </section>
 
-    <h3>Közepes</h3>
-    <ul>
-      <li>Szúrj be egy képet, és adj hozzá alternatív szöveget.</li>
-      <li>Hozz létre egy hivatkozást, ami új oldalon nyílik meg.</li>
-    </ul>
-
-    <h3>Nehéz</h3>
-    <ul>
-      <li>Készíts egy gombot, amire kattintva megváltozik egy adott szöveg.</li>
-      <li>Formázz meg egy bekezdést úgy, mint a Word-ben: félkövér, dőlt, színes és középre igazított.</li>
-    </ul>
+  <section id="miert">
+    <h2>Miért csináltam ezt a weboldalt?</h2>
+    <p>Ez az oldal azért készült, hogy segítse a kezdőket a HTML tanulásában, egy könnyen követhető, egyszerű felépítésű példával és gyakorlati feladatokkal.</p>
   </section>
 
   <section id="szerzo">
     <h2>Szerző</h2>
     <p>Dankó Sándor Gábor</p>
+    <p>Ez az oldal saját fejlesztés, célja a webes alapismeretek átadása érthető és közérthető formában.</p>
   </section>
 
   <script>
     function showSection(id) {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => section.classList.remove('active'));
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
     }
+
+    // Alapértelmezett oldal betöltéskor az Alapok menü mutatása
+    showSection('alapok');
   </script>
 </body>
 </html>
